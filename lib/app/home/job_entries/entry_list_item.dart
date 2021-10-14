@@ -5,9 +5,9 @@ import 'package:trywidgests/app/home/models/job.dart';
 
 class EntryListItem extends StatelessWidget {
   const EntryListItem({
-    @required this.entry,
-    @required this.job,
-    @required this.onTap,
+    required this.entry,
+    required this.job,
+    required this.onTap,
   });
 
   final Entry entry;
@@ -62,9 +62,9 @@ class EntryListItem extends StatelessWidget {
           Expanded(child: Container()),
           Text(durationFormatted, style: TextStyle(fontSize: 16.0)),
         ]),
-        if (entry.comment.isNotEmpty)
+        if (entry.comment!.isNotEmpty)
           Text(
-            entry.comment,
+            entry.comment!,
             style: TextStyle(fontSize: 12.0),
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
@@ -76,11 +76,11 @@ class EntryListItem extends StatelessWidget {
 
 class DismissibleEntryListItem extends StatelessWidget {
   const DismissibleEntryListItem({
-    this.key,
-    this.entry,
-    this.job,
-    this.onDismissed,
-    this.onTap,
+    required this.key,
+   required this.entry,
+   required this.job,
+   required this.onDismissed,
+   required this.onTap,
   });
 
   final Key key;

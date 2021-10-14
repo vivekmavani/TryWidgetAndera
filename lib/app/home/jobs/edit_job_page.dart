@@ -12,13 +12,13 @@ class EditJobPage extends StatefulWidget {
  final Job? job;
   final Database database;
 
-  static Future<void> show(BuildContext context, {Job? job}) async {
+  static Future<void> show(BuildContext context, {Database? database,Job? job}) async {
     //context pass here for accessing database in _submit method
-    final database = Provider.of<Database>(context, listen: false);
+//    final database = Provider.of<Database>(context, listen: false);
     await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => EditJobPage(
-          database: database,
+          database: database!,
           job: job,
         ),
         fullscreenDialog: true,

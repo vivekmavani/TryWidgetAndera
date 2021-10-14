@@ -10,13 +10,13 @@ import 'package:trywidgests/common_widgets/show_exception_alert_dialog.dart';
 import 'package:trywidgests/services/database.dart';
 
 class EntryPage extends StatefulWidget {
-  const EntryPage({@required this.database, @required this.job, this.entry});
+  const EntryPage({required this.database, required this.job, this.entry});
   final Database database;
   final Job job;
-  final Entry entry;
+  final Entry? entry;
 
   static Future<void> show(
-      {BuildContext context, Database database, Job job, Entry entry}) async {
+      {required BuildContext context, required Database database, required Job job, Entry? entry}) async {
     await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) =>
@@ -31,11 +31,11 @@ class EntryPage extends StatefulWidget {
 }
 
 class _EntryPageState extends State<EntryPage> {
-  DateTime _startDate;
-  TimeOfDay _startTime;
-  DateTime _endDate;
-  TimeOfDay _endTime;
-  String _comment;
+  late DateTime _startDate;
+  late TimeOfDay _startTime;
+  late DateTime _endDate;
+  late TimeOfDay _endTime;
+  late String _comment;
 
   @override
   void initState() {
@@ -87,10 +87,10 @@ class _EntryPageState extends State<EntryPage> {
         elevation: 2.0,
         title: Text(widget.job.name),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             child: Text(
               widget.entry != null ? 'Update' : 'Create',
-              style: TextStyle(fontSize: 18.0, color: Colors.white),
+              style: TextStyle(color: Colors.white),
             ),
             onPressed: () => _setEntryAndDismiss(context),
           )

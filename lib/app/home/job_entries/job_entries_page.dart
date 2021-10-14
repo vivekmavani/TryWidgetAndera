@@ -15,7 +15,7 @@ import 'package:trywidgests/common_widgets/show_exception_alert_dialog.dart';
 import 'package:trywidgests/services/database.dart';
 
 class JobEntriesPage extends StatelessWidget {
-  const JobEntriesPage({@required this.database, @required this.job});
+  const JobEntriesPage({required this.database, required this.job});
   final Database database;
   final Job job;
 
@@ -53,7 +53,7 @@ class JobEntriesPage extends StatelessWidget {
               'Edit',
               style: TextStyle(fontSize: 18.0, color: Colors.white),
             ),
-            onPressed: () => EditJobPage.show(context, job: job),
+            onPressed: () => EditJobPage.show(context, job: job,database: database),
           ),
         ],
       ),

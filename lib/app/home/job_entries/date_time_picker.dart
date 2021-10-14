@@ -6,12 +6,12 @@ import 'package:trywidgests/app/home/job_entries/input_dropdown.dart';
 
 class DateTimePicker extends StatelessWidget {
   const DateTimePicker({
-    Key key,
-    this.labelText,
-    this.selectedDate,
-    this.selectedTime,
-    this.selectDate,
-    this.selectTime,
+     Key? key,
+    required this.labelText,
+   required this.selectedDate,
+   required this.selectedTime,
+   required this.selectDate,
+   required this.selectTime,
   }) : super(key: key);
 
   final String labelText;
@@ -51,7 +51,7 @@ class DateTimePicker extends StatelessWidget {
           child: InputDropdown(
             labelText: labelText,
             valueText: Format.date(selectedDate),
-            valueStyle: valueStyle,
+            valueStyle: valueStyle!,
             onPressed: () => _selectDate(context),
           ),
         ),
