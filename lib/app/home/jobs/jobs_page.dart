@@ -51,20 +51,14 @@ class JobsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Jobs'),
         actions: [
-          TextButton(
-            onPressed: () => _confirmSignOut(context),
-            child: Text(
-              'Logout',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
+         IconButton(
+           icon : Icon(Icons.add,color: Colors.white,),
+           onPressed:  () => EditJobPage.show(context,database :Provider.of<Database>(context,listen: false)),
+         ),
+
         ],
       ),
       body: _buildContents(context),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => EditJobPage.show(context,database :Provider.of<Database>(context,listen: false)),
-      ),
     );
   }
 

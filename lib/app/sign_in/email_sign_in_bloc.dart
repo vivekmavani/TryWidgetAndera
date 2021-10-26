@@ -1,16 +1,22 @@
 import 'dart:async';
 
+import 'package:rxdart/rxdart.dart';
 import 'package:trywidgests/app/sign_in/email_sign_in_model.dart';
 import 'package:trywidgests/services/auth.dart';
 
 class EmailSignInBloc {
   EmailSignInBloc({required this.auth});
   final AuthBase auth;
-  final StreamController<EmailSignInModel> _modelControler = StreamController<EmailSignInModel>();
-  Stream<EmailSignInModel> get modelStream => _modelControler.stream;
-  EmailSignInModel _model = EmailSignInModel();
+  //using rxdart use Subject instead of StreamController
+  final _modelSubject = BehaviorSubject<EmailSignInModel>.seeded(EmailSignInModel());
+  // final StreamController<EmailSignInModel> _modelControler = StreamController<EmailSignInModel>();
+  // Stream<EmailSignInModel> get modelStream => _modelControler.stream;
+  Stream<EmailSignInModel> get modelStream => _modelSubject.stream;
+ //  EmailSignInModel _model = EmailSignInModel();
+  EmailSignInModel get _model => _modelSubject.value;
   void dispose(){
-    _modelControler.close();
+    //_modelControler.close();
+    _modelSubject.close();
   }
   Future<void> submit() async{
     updateWith(submited: true,isLoading: true);
@@ -47,15 +53,22 @@ class EmailSignInBloc {
      bool? submited,
 }){
     //update model
- _model = _model.copyWith(
+ /*_model = _model.copyWith(
    email: email,
    password: password,
    formType: formType,
    isLoading: isLoading,
    submited: submited,
- );
+ );*/
+    _modelSubject.value = _model.copyWith(
+      email: email,
+      password: password,
+      formType: formType,
+      isLoading: isLoading,
+      submited: submited,
+    );
  //add updated model to _modelcntroller
-    _modelControler.add(_model);
+ //   _modelControler.add(_model);
   }
 
 

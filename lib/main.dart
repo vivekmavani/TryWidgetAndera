@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:trywidgests/app/home/home_page.dart';
 import 'package:trywidgests/app/landingpage.dart';
 import 'package:trywidgests/services/auth.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.indigo,
         ),
-        home: LandingPage(),
+       home: LandingPage(),
+       // home: HomePageFirestore(),
       ),
     );
   }
